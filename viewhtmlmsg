@@ -8,7 +8,6 @@ import re
 import tempfile
 import urllib.parse
 import time
-import webbrowser
 import subprocess
 import email.parser
 import email.iterators
@@ -41,7 +40,7 @@ def visit_file(file, app=None):
   if app is not None:
     subprocess.check_call([app, file])
   else:
-    webbrowser.open(file)
+    subprocess.check_call(['xdg-open', file])
 
 def viewhtml(content, safe, wait, app):
   msg = load_message(content)
